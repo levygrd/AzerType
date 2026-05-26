@@ -37,7 +37,7 @@ Projet AzerType OpenclassRoom/
 
 ## Lancer le projet
 
-Ouvre simplement le fichier `index.HTML` dans ton navigateur, aucune installation nécessaire.
+Clique simplement [ICI](https://levygrd.github.io/AzerType/)
 
 ## Auteur
 
