@@ -69,7 +69,7 @@ function afficherEmail(nom, email, score,listeProposition) {
 
 
 
-function gererFormulaire(score) {
+function gererFormulaire(score,nombreMots,listeProposition) {
     let boutonEnvoyer = document.getElementById("btnEnvoyerMail")
 boutonEnvoyer.addEventListener("click", () =>{
     let NomFormulaire = document.getElementById("nom").value
