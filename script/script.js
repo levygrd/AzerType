@@ -61,7 +61,7 @@ function afficherProposition(mot) {
 
 
 
-function afficherEmail(nom, email, score,listeProposition) {  
+function afficherEmail(nom,email,score,listeProposition) {  
     let ModeJeu = listeProposition === listeMots ? "Mots" : "Phrases"               //NomFormulaire+" a Obtenue un score de : "+score+ " / " +nombreMots+" sur le mode "+ModeJeu+" !, Essaye de le battre !
     let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, ${nom} a Obtenue un score de ${score} sur le mode ${ModeJeu} du site AzerType ! Essaye de le battre !`
     location.href = mailto
@@ -211,7 +211,7 @@ if (listeProposition[i] === listeMots){
 }else{
     ModeJeu = phrases
 }
-gererFormulaire(score)
+gererFormulaire(score, listeProposition.length, listeProposition)
 
 
 
