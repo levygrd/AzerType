@@ -76,7 +76,7 @@ boutonEnvoyer.addEventListener("click", () =>{
     let MailFormulaire = document.getElementById("email").value
     console.log(NomFormulaire,MailFormulaire)
     let sujet = "Voici le score de "+NomFormulaire+" sur le jeu AzerType !"
-    let Message = NomFormulaire+" a Obtenue un score de : "+score+ " / " +nombreMots+" sur le mode "+ModeJeu+" !, Essaye de le battre !"
+    //let Message = NomFormulaire+" a Obtenue un score de : "+score+ " / " +nombreMots+" sur le mode "+ModeJeu+" !, Essaye de le battre !"
     //console.log(sujet)
     //console.log(Message)
     let NomFormulaireElement = document.getElementById("nom")
