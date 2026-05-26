@@ -43,6 +43,8 @@ BoutonValidation.addEventListener("click", () => {
 }
 */
 
+
+
 function afficherProposition(mot) {
     let ZoneProposition = document.querySelector(".zoneProposition")
     ZoneProposition.innerText = mot
@@ -56,6 +58,9 @@ function afficherProposition(mot) {
  * @param {string} score : le score. 
  */
 
+
+
+
 function afficherEmail(nom, email, score,listeProposition) {  
     let ModeJeu = listeProposition === listeMots ? "Mots" : "Phrases"               //NomFormulaire+" a Obtenue un score de : "+score+ " / " +nombreMots+" sur le mode "+ModeJeu+" !, Essaye de le battre !
     let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, ${nom} a Obtenue un score de ${score} sur le mode ${ModeJeu} du site AzerType ! Essaye de le battre !`
@@ -64,20 +69,56 @@ function afficherEmail(nom, email, score,listeProposition) {
 
 
 
+function gererFormulaire(score) {
+    let boutonEnvoyer = document.getElementById("btnEnvoyerMail")
+boutonEnvoyer.addEventListener("click", () =>{
+    let NomFormulaire = document.getElementById("nom").value
+    let MailFormulaire = document.getElementById("email").value
+    console.log(NomFormulaire,MailFormulaire)
+    let sujet = "Voici le score de "+NomFormulaire+" sur le jeu AzerType !"
+    let Message = NomFormulaire+" a Obtenue un score de : "+score+ " / " +nombreMots+" sur le mode "+ModeJeu+" !, Essaye de le battre !"
+    //console.log(sujet)
+    //console.log(Message)
+    let NomFormulaireElement = document.getElementById("nom")
+    VerifierNom(NomFormulaireElement)
+    if (!nomCorrect) {
+        console.log("Le nom est incorrect.")
+    }else{
+        let MailFormulaireElement = document.getElementById("email")
+        VerifierEmail(MailFormulaireElement)
+
+        if (emailCorrect) {
+            afficherEmail(NomFormulaire, MailFormulaire, score, listeProposition)
+        } else {
+            console.log("Email non valide.")
+    }
+    }
+    
+})
+}
+
+
+
 let nomFormulaire = document.getElementById("nom")
 nomFormulaire.classList.add("error")
 let nomCorrect = false
 function VerifierNom(nomFormulaire) {
-    let nomRegex = new RegExp("^[a-zA-ZÀ-ÿ -]+$")
-    
-    if (nomRegex.test(nomFormulaire.value)) {
-        nomCorrect = true        
-        console.log("OK")
-        nomFormulaire.classList.remove("error")
-    } else {
-        nomCorrect = false     
+    try {
+        let nomRegex = new RegExp("^[a-zA-ZÀ-ÿ -]+$")
+        
+        if (nomRegex.test(nomFormulaire.value)) {
+            nomCorrect = true        
+            console.log("OK")
+            nomFormulaire.classList.remove("error")
+        } else {
+            nomCorrect = false     
+            nomFormulaire.classList.add("error")
+            console.log("KO")
+        }
+    } catch (error) {
+        console.error("Erreur dans VerifierNom :", error)
+        nomCorrect = false
         nomFormulaire.classList.add("error")
-        console.log("KO")
     }
 }
 
@@ -88,23 +129,35 @@ let MailFormulaire = document.getElementById("email")
 MailFormulaire.classList.add("error")
 let emailCorrect = false
 function VerifierEmail(MailFormulaire) {
-    let emailRegex = new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")
-    
-    if (emailRegex.test(MailFormulaire.value)) {
-        emailCorrect = true        
-        console.log("OK")
-        MailFormulaire.classList.remove("error")
-    } else {
-        emailCorrect = false     
+    try {
+        let emailRegex = new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")
+        
+        if (emailRegex.test(MailFormulaire.value)) {
+            emailCorrect = true        
+            console.log("OK")
+            MailFormulaire.classList.remove("error")
+        } else {
+            emailCorrect = false     
+            MailFormulaire.classList.add("error")
+            console.log("KO")
+        }
+    } catch (error) {
+        console.error("Erreur dans VerifierEmail :", error)
+        emailCorrect = false
         MailFormulaire.classList.add("error")
-        console.log("KO")
     }
 }
+
+
+
 
 function afficherResultat(score, nombreMots) {
     let SpanScore = document.querySelector(".zoneScore span")
     SpanScore.innerText = score + " / " + nombreMots
 }
+
+
+
 
 function lancerJeu() {
     let score = 0
@@ -158,31 +211,8 @@ if (listeProposition[i] === listeMots){
 }else{
     ModeJeu = phrases
 }
-let boutonEnvoyer = document.getElementById("btnEnvoyerMail")
-boutonEnvoyer.addEventListener("click", () =>{
-    let NomFormulaire = document.getElementById("nom").value
-    let MailFormulaire = document.getElementById("email").value
-    console.log(NomFormulaire,MailFormulaire)
-    let sujet = "Voici le score de "+NomFormulaire+" sur le jeu AzerType !"
-    let Message = NomFormulaire+" a Obtenue un score de : "+score+ " / " +nombreMots+" sur le mode "+ModeJeu+" !, Essaye de le battre !"
-    //console.log(sujet)
-    //console.log(Message)
-    let NomFormulaireElement = document.getElementById("nom")
-    VerifierNom(NomFormulaireElement)
-    if (!nomCorrect) {
-        console.log("Le nom est incorrect.")
-    }else{
-        let MailFormulaireElement = document.getElementById("email")
-        VerifierEmail(MailFormulaireElement)
+gererFormulaire(score)
 
-        if (emailCorrect) {
-            afficherEmail(NomFormulaire, MailFormulaire, score, listeProposition)
-        } else {
-            console.log("Email non valide.")
-    }
-    }
-    
-})
 
 
 
