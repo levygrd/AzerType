@@ -82,7 +82,7 @@ boutonEnvoyer.addEventListener("click", () =>{
     let NomFormulaireElement = document.getElementById("nom")
     VerifierNom(NomFormulaireElement)
     if (!nomCorrect) {
-        alert("Nom invalide.")
+        document.querySelector(".popup form").insertAdjacentHTML("beforeend", "<p style='color:red'>Nom invalide.</p>")
         console.log("Nom invalide.")
     }else{
         let MailFormulaireElement = document.getElementById("email")
@@ -91,7 +91,7 @@ boutonEnvoyer.addEventListener("click", () =>{
         if (emailCorrect) {
             afficherEmail(NomFormulaire, MailFormulaire, score, listeProposition)
         } else {
-            alert("Email non valide.")
+            document.querySelector(".popup form").insertAdjacentHTML("beforeend", "<p style='color:red'>Email invalide.</p>")
             console.log("Email non valide.")
     }
     }
