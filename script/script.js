@@ -48,6 +48,8 @@ function afficherMesssageErreur(message){
     SpanErreur.id = "SpanErreur"
     SpanErreur.innerText = message
     SpanErreur.style.color = "white"
+    SpanErreur.style.fontWeight = "bold"
+    SpanErreur.style.fontStyle = "italic"
     document.querySelector(".popup").appendChild(SpanErreur)
 }
 
