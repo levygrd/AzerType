@@ -42,7 +42,14 @@ BoutonValidation.addEventListener("click", () => {
 })
 }
 */
+function afficherMesssageErreur(message){
 
+    let SpanErreur = document.createElement("span")
+    SpanErreur.id = "SpanErreur"
+    SpanErreur.innerText = message
+    SpanErreur.style.color = "white"
+    document.querySelector(".popup").appendChild(SpanErreur)
+}
 
 
 function afficherProposition(mot) {
@@ -55,9 +62,8 @@ function afficherProposition(mot) {
  * Cette fonction construit et affiche l'email. 
  * @param {string} nom : le nom du joueur
  * @param {string} email : l'email de la personne avec qui il veut partager son score
- * @param {string} score : le score. 
+ * @param {string} score : le score.
  */
-
 
 
 
@@ -70,8 +76,9 @@ function afficherEmail(nom,email,score,listeProposition) {
 
 
 function gererFormulaire(score,nombreMots,listeProposition) {
+    try { 
     let boutonEnvoyer = document.getElementById("btnEnvoyerMail")
-boutonEnvoyer.addEventListener("click", () =>{
+    boutonEnvoyer.addEventListener("click", () =>{
     let NomFormulaire = document.getElementById("nom").value
     let MailFormulaire = document.getElementById("email").value
     console.log(NomFormulaire,MailFormulaire)
@@ -80,23 +87,33 @@ boutonEnvoyer.addEventListener("click", () =>{
     //console.log(sujet)
     //console.log(Message)
     let NomFormulaireElement = document.getElementById("nom")
-    VerifierNom(NomFormulaireElement)
+    VerifierNom(NomFormulaireElement)    
     if (!nomCorrect) {
-        document.querySelector(".popup form").insertAdjacentHTML("beforeend", "<p style='color:red'>Nom invalide.</p>")
-        console.log("Nom invalide.")
+        afficherMesssageErreur("Nom invalide.")
+        //document.querySelector(".popup form").insertAdjacentHTML("beforeend", "<p style='color:red'>Nom invalide.</p>")
+       // console.log("Nom invalide.")
     }else{
+        let ancienSpan = document.querySelector(".popup #SpanErreur")
+        if (ancienSpan) ancienSpan.remove()
         let MailFormulaireElement = document.getElementById("email")
         VerifierEmail(MailFormulaireElement)
 
         if (emailCorrect) {
+            let ancienSpan = document.querySelector(".popup #SpanErreur")
+            if (ancienSpan) ancienSpan.remove()
             afficherEmail(NomFormulaire, MailFormulaire, score, listeProposition)
         } else {
-            document.querySelector(".popup form").insertAdjacentHTML("beforeend", "<p style='color:red'>Email invalide.</p>")
-            console.log("Email non valide.")
+            afficherMesssageErreur("Email invalide.")
+            //document.querySelector(".popup form").insertAdjacentHTML("beforeend", "<p style='color:red'>Email invalide.</p>")
+           // console.log("Email non valide.")
     }
     }
     
-})
+})}catch (error){
+    console.error("erreur")
+}
+
+   
 }
 
 
