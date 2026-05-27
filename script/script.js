@@ -214,6 +214,7 @@ function lancerJeu() {
             afficherProposition("Jeu terminé !") // 6. Fin du jeu
             afficherResultat(score, listeProposition.length)
             BoutonValidation.disabled = true
+            gererFormulaire(score, listeProposition.length, listeProposition)
         }
     })
 
@@ -240,7 +241,7 @@ if (listeProposition[i] === listeMots){
 }else{
     ModeJeu = phrases
 }
-gererFormulaire(score, listeProposition.length, listeProposition)
+
 
 
 
