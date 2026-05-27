@@ -113,6 +113,7 @@ function gererFormulaire(score,nombreMots,listeProposition) {
     
 })}catch (error){
     console.error("erreur")
+    afficherMesssageErreur("erreur")
 }
 
    
