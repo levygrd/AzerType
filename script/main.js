@@ -24,4 +24,5 @@ for (let i = 0; i < boutonRadio.length; i++) {
 
 //recuperation du bouton envoyer du formulaire
 let boutonEnvoyer = document.getElementById("btnEnvoyerMail");
+
 console.log(boutonEnvoyer)

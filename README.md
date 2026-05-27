@@ -37,7 +37,7 @@ Projet AzerType OpenclassRoom/
 
 ## Lancer le projet
 
-Clique simplement [ICI](https://levygrd.github.io/AzerType/)
+Clique simplement [ICI](https://levygrd.github.io/AzerType/) .
 
 ## Auteur
 

@@ -54,10 +54,14 @@ function afficherMesssageErreur(message){
 }
 
 
+
+
 function afficherProposition(mot) {
     let ZoneProposition = document.querySelector(".zoneProposition")
     ZoneProposition.innerText = mot
 }
+
+
 
 
 /**
@@ -74,6 +78,7 @@ function afficherEmail(nom,email,score,listeProposition) {
     let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, ${nom} a Obtenue un score de ${score} sur le mode ${ModeJeu} du site AzerType ! Essaye de le battre !`
     location.href = mailto
 }
+
 
 
 
@@ -121,6 +126,7 @@ function gererFormulaire(score,nombreMots,listeProposition) {
 
 
 
+
 let nomFormulaire = document.getElementById("nom")
 nomFormulaire.classList.add("error")
 let nomCorrect = false
@@ -143,6 +149,7 @@ function VerifierNom(nomFormulaire) {
         nomFormulaire.classList.add("error")
     }
 }
+
 
 
 
